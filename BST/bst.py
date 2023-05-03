@@ -5,6 +5,19 @@ class _Node:
         self.parent = None
         self.left = None
         self.right = None
+    def replace_with(self, node):
+        if node == node.parent.right:
+            node.parent.right = node.right
+        else:
+            node.parent.left = node.right
+        node.left = self.left
+        node.right = self.right
+        node.parent = self.parent
+        if self == self.parent.right:
+            self.parent.right = node
+        else:
+            self.parent.left = node
+        del(self)
 
 
 
